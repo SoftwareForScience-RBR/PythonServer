@@ -1,4 +1,6 @@
 import socket                   # Import socket module
+path = 'C:/Users/Brendan van Walstijn/PycharmProjects/server/file.txt'
+import datetime
 
 while True:
     port = 60000  # Reserve a port for your service.
@@ -13,4 +15,10 @@ while True:
     print('Got connection from', addr)
     data = conn.recv(1024)
     print('Server received', repr(data))
+
+    #write to file
+    saveFile = open(path, "a")
+    saveFile.write(data.decode() + "\n")
+    saveFile.close()
+
     s.close()
